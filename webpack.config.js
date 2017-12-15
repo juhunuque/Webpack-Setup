@@ -32,6 +32,16 @@ const config = {
   module: {
       rules: [
           {
+            test: /\.(pdf|gif|png|jpe?g|svg)$/,
+            use: 
+                {
+                    loader: 'file-loader?name=[path][name].[ext]',
+                    options: {
+                        publicPath: './tmp'
+                    }
+                }
+          },
+          {
             test: /\.js$/,
             use: 'babel-loader',
             exclude: [
@@ -52,6 +62,7 @@ const config = {
                 loader: "sass-loader" // compiles Sass to CSS
             }]
           }
+          
       ]
   },
   plugins: [
